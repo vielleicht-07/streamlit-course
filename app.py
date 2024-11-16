@@ -19,4 +19,4 @@ ev_sales_df = load_data()
 ##################### PAGE SETUP #####################
 
 
- st,bar_chart(ev_sales_df, x="year", y="value"
+ st,bar_chart(ev_sales_df, x="year", y="value")
