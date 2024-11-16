@@ -4,53 +4,62 @@ import pandas as pd
 
 ##################### PAGE SETUP ###################
 
-# Set up the page
 st.set_page_config(
-    page_title="RJ",
-    layout="centered", # or wide
-    page_icon="🚗", # choose your favorite icon
-    initial_sidebar_state="collapsed" # or expanded
+    page_title="Personalized Favorites App",
+    layout="centered",
+    page_icon="🚗",
+    initial_sidebar_state="collapsed"
 )
 
 ##################### PAGE SETUP ###################
 
 
+st.title("🎨 Welcome to the Favorites App!")
 
-# 1. Title
-st.title("Streamlit Components Demo")
+st.header("Personalize your app with your favorites!")
 
-# 2. Header
-st.header("This is a Header")
+st.text("This app helps you choose and display your favorite items interactively.")
 
-# 3. Subheader
-st.subheader("This is a Subheader")
+st.markdown(
+    """
+    ### Features:
+    - 📋 Input your favorites
+    - 🎨 Style your choices
+    - 🚀 See results dynamically!
+    """
+)
 
-# 4. Text
-st.text("Streamlit makes it easy to create web apps for data science.")
+st.markdown("---")
 
-# 5. Markdown
-st.markdown("**Markdown** lets you style text with *italics*, **bold**, and [links](https://streamlit.io).")
+st.subheader("Tell us about yourself!")
 
-# 6. Input Widgets
-name = st.text_input("Enter your name:")
-st.write(f"My name is, {name}!")
+name = st.text_input("What's your name?", placeholder="Type your name here...")
+if name:
+    st.success(f"Hi, {name}! 👋")
 
-# 6. Input Widgets
-color = st.text_input("Enter your favorite color:")
-st.write(f"Your favorite color is, {color}!")
+color = st.text_input("What's your favorite color?", placeholder="Type a color here...")
+if color:
+    st.info(f"Your favorite color is **{color}** 🌈")
 
-# 6. Input Widgets
-animal = st.text_input("Enter your favorite animal:")
-st.write(f"Your favorite animal is, {animal}!")
+animal = st.text_input("What's your favorite animal?", placeholder="Type an animal here...")
+if animal:
+    st.warning(f"Wow, you like **{animal}**! 🐾")
 
+number = st.number_input("Choose your favorite number:", step=1, min_value=0, max_value=100)
+if number:
+    st.write(f"Your favorite number is **{number}** 🎲")
 
-rnumber = st.number_input("Choose your favorite number:")
-st.write(f"Your favorite number is, {rnumber}!")
+st.markdown("---")
 
+st.subheader("Generate your favorite app 🎛️")
+if st.button("Show me options!"):
+    selectbox = st.selectbox("Pick your favorite development tool:", ["Visual Studio Code", "Jupyter Notebook", "I don't know"])
+    st.success(f"Great choice! You selected: **{selectbox}** 💻")
 
-if st.button("Generate your favorite app") == True:
-  selectbox = st.selectbox("Choose an option:", ["Visual Studio Code", "jupyter notebook", "idk"])
-  st.write(f"You selected: {selectbox}")
-
-
- 
+st.markdown(
+    """
+    ---
+    ### Thank you for using the app! 🚀
+    - Feel free to explore more options.
+    """
+)
