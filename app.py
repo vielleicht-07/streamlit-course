@@ -14,52 +14,45 @@ st.set_page_config(
 ##################### PAGE SETUP ###################
 
 
-st.title("🎨 Welcome to the Favorites App!")
 
-st.header("Personalize your app with your favorites!")
+# 1. Title
+st.title("Streamlit Components Demo")
 
-st.text("This app helps you choose and display your favorite items interactively.")
+# 2. Header
+st.header("This is a Header")
 
-st.markdown(
-    """
-    ### Features:
-    - 📋 Input your favorites
-    - 🎨 Style your choices
-    - 🚀 See results dynamically!
-    """
-)
+# 3. Subheader
+st.subheader("This is a Subheader")
 
-st.markdown("---")
+# 4. Text
+st.text("Streamlit makes it easy to create web apps for data science.")
 
-st.subheader("Tell us about yourself!")
+# 5. Markdown
+st.markdown("**Markdown** lets you style text with *italics*, **bold**, and [links](https://streamlit.io).")
 
-name = st.text_input("What's your name?", placeholder="Type your name here...")
-if name:
-    st.success(f"Hi, {name}! 👋")
+# 6. Input Widgets
+name = st.text_input("Enter your name:")
+st.write(f"My name is, {name}!")
 
-color = st.text_input("What's your favorite color?", placeholder="Type a color here...")
-if color:
-    st.info(f"Your favorite color is **{color}** 🌈")
+# 6. Input Widgets
+color = st.text_input("Enter your favorite color:")
+st.write(f"Your favorite color is, {color}!")
 
-animal = st.text_input("What's your favorite animal?", placeholder="Type an animal here...")
-if animal:
-    st.warning(f"Wow, you like **{animal}**! 🐾")
+# 6. Input Widgets
+animal = st.text_input("Enter your favorite animal:")
+st.write(f"Your favorite animal is, {animal}!")
 
-number = st.number_input("Choose your favorite number:", step=1, min_value=0, max_value=100)
-if number:
-    st.write(f"Your favorite number is **{number}** 🎲")
 
-st.markdown("---")
 
-st.subheader("Generate your favorite app 🎛️")
-if st.button("Show me options!"):
-    selectbox = st.selectbox("Pick your favorite development tool:", ["Visual Studio Code", "Jupyter Notebook", "I don't know"])
-    st.success(f"Great choice! You selected: **{selectbox}** 💻")
+if "selectbox_visible" not in st.session_state:
+    st.session_state.selectbox_visible = False
 
-st.markdown(
-    """
-    ---
-    ### Thank you for using the app! 🚀
-    - Feel free to explore more options.
-    """
-)
+favorite_number = st.number_input("Choose your favorite number:")
+st.write(f"Your favorite number is {favorite_number}!")
+
+if st.button("Generate your favorite app"):
+    st.session_state.selectbox_visible = True
+
+if st.session_state.selectbox_visible:
+    selectbox = st.selectbox("Choose an option:", ["Visual Studio Code", "Jupyter Notebook", "I don't know"])
+    st.write(f"You selected: {selectbox}")
